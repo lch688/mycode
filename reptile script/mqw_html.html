@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>红包任务-名气网</title>
+    <link href="/Content/mui.min.css" rel="stylesheet" />
+    <link href="/Content/ElementUI/element-ui.css" rel="stylesheet" />
+    <link href="/Content/Wap/base.css?v=v2.99" rel="stylesheet" />
+    <link href="/Content/Public/ekuiconfont.css?v=v2.99" rel="stylesheet" />
+
+    <link href="/Content/Wap/elefix.css" rel="stylesheet" />
+    <style>
+        .box-card {
+            margin-top: 5px
+        }
+
+        .el-card__body {
+            padding: 15px;
+        }
+
+        .el-divider {
+            border-bottom: 1px dashed #eee;
+            background-color: #ffffff;
+        }
+
+        .el-divider--horizontal {
+            margin: 8px 0 !important;
+        }
+
+        .el-card__header {
+            padding: 10px 10px;
+            background-color: #F9F9F9;
+        }
+
+        .el-dropdown {
+            color: #fff;
+            font-size: 17px;
+        }
+
+        .el-message-box {
+            width: auto;
+        }
+    </style>
+
+    <script src="/Scripts/Public/jquery.min.js"></script>
+    <script type="text/javascript" src="/Scripts/vue.js"></script>
+    <script src="/Scripts/ElementUI/element-ui.js"></script>
+</head>
+<body>
+
+
+<header class="mui-bar mui-bar-nav" id="vueHeader" v-cloak>
+    <a class="mui-icon mui-icon-left-nav mui-pull-left" href="javascript:history.back(-1);"></a>
+    <h1 class="mui-title">红包试用</h1>
+
+</header>
+<div class="mui-content" style="margin-bottom:50px">
+    <div id="vueTaskDetails" v-cloak>
+
+        <el-card>
+            <el-row>
+                <el-col :span="12">
+                    <div style="margin-top: 3px;float:left;margin-right:3px"><img src="/Image/public/ico/tb_ico.jpg" /></div>任务编号：961930
+                </el-col>
+                <el-col :span="12">
+                    <div style="float:right">
+                        <i v-if="1==2" class="el-icon-monitor" style="color:#409EFF;font-size:16px"></i>
+                        <i v-if="1==1" class="el-icon-mobile-phone" style="color:#409EFF;font-size:16px"></i>
+                        手机端下单
+                    </div>
+                </el-col>
+            </el-row>
+            <el-divider></el-divider>
+            <el-row>
+                <el-col :span="24">
+                    下单价格：<span class="red"><b>49.00</b></span>元
+                </el-col>
+            </el-row>
+            <el-divider></el-divider>
+            <el-row>
+                <el-col :span="24">
+                    完成返还：
+                    <span class="red">52.50元</span>
+                </el-col>
+            </el-row>
+            <el-divider></el-divider>
+            <el-row>
+                <el-col :span="24">
+                    返款方式：<span class="red">线下返本</span>
+                </el-col>
+            </el-row>
+            <el-divider></el-divider>
+            <el-row>
+                <el-col :span="24">
+                    剩余份数：<span class="red">3/3</span>
+                </el-col>
+            </el-row>
+            <el-divider></el-divider>
+            <el-row>
+                <el-col :span="24">
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="true">要求好评</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="false" type="success">要求追评</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="true" type="info">货比3家</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="true" type="warning">浏览3件宝贝</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="false" type="danger">延迟购买</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="false" type="success">限制买号级别</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="false" type="success">要求收藏店铺</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="false" type="info">要求收藏加购</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="false" type="warning">要求假聊</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="false" type="danger">需要审核买号</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="true">女号可领</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="false" type="success">限制年龄</el-tag>
+                    <el-tag style="margin-bottom:5px" size="mini" effect="plain" v-if="false" type="success">限制地区</el-tag>
+
+                </el-col>
+            </el-row>
+        </el-card>
+        <el-card class="box-card">
+            <div slot="header" class="clearfix">
+                <span><b>选择下单买号</b></span>
+            </div>
+            <el-row>
+                <el-col :span="8">
+                    陈咻哄
+                </el-col>
+                <el-col :span="6">
+                    女21-25岁
+                </el-col>
+                <el-col :span="6">
+                    二心号
+                </el-col>
+                <el-col :span="4">
+                    <div style="float:left;margin-bottom:5px">
+                        <el-button type="primary" size="mini" :loading="btnLoading" v-on:click="applyTask('陈咻哄',40296)">领取</el-button>
+
+                    </div>
+                </el-col>
+            </el-row>
+            <el-divider></el-divider>
+        </el-card>
+    </div>
+    <el-card shadow="never" id="vueBindAccount" v-cloak v-if="showBindAccount">
+        <div slot="header" class="clearfix">
+            <span>绑定淘宝/天猫账号</span>
+        </div>
+
+        <el-form :model="formData" label-position="top" ref="ruleForm" size="small">
+            <el-card shadow="">
+                <el-form-item label="淘宝/天猫会员名" prop="Account">
+                    <el-input v-model="formData.Account" v-bind:disabled="isAccountDisabled" ></el-input>
+                </el-form-item>
+
+                <el-form-item label="性 别" prop="Sex" style="margin-bottom:25px;">
+                    <el-radio-group :disabled="formData.SexDisabled" v-model="formData.Sex">
+                        <el-radio-button label="1">男</el-radio-button>
+                        <el-radio-button label="2">女</el-radio-button>
+                    </el-radio-group>
+                </el-form-item>
+
+                <el-form-item label="年龄段" size="small">
+                    <el-select v-model="formData.Ages" placeholder="请选择年龄段">
+                        <el-option label="20岁以下" value="1"></el-option>
+                        <el-option label="21-25岁" value="2"></el-option>
+                        <el-option label="26-32岁" value="3"></el-option>
+                        <el-option label="33-40岁" value="4"></el-option>
+                        <el-option label="41岁以上" value="5"></el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="帐号信誉/等级" size="small" prop="AccountLevel">
+                    <el-select :disabled="formData.AccountLevelDisabled" v-model="formData.AccountLevel" placeholder="请选择信誉等级">
+                        <el-option label="白号" value="1"></el-option>
+                        <el-option label="一心号" value="2"></el-option>
+                        <el-option label="二心号" value="3"></el-option>
+                        <el-option label="三心号" value="4"></el-option>
+                        <el-option label="四心号" value="5"></el-option>
+                        <el-option label="五心号" value="6"></el-option>
+                        <el-option label="一钻号" value="7"></el-option>
+                        <el-option label="二钻号" value="8"></el-option>
+                        <el-option label="三钻号" value="9"></el-option>
+                        <el-option label="四钻号" value="10"></el-option>
+                        <el-option label="五钻及以上" value="11"></el-option>
+
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="常购类目" prop="CategoryIds">
+                    <el-select v-model="formData.CategoryIds" multiple :multiple-limit="3" placeholder="请选择常购类目">
+                        <el-option label="女装/内衣" :value="1"></el-option>
+                        <el-option label="精品男装" :value="2"></el-option>
+                        <el-option label="鞋靴/箱包" :value="3"></el-option>
+                        <el-option label="母婴/儿童/玩具" :value="4"></el-option>
+                        <el-option label="运动/户外" :value="5"></el-option>
+                        <el-option label="美食/水果/零食" :value="6"></el-option>
+                        <el-option label="家电/数码/手机" :value="7"></el-option>
+                        <el-option label="美妆/洗护/保健品" :value="8"></el-option>
+                        <el-option label="时尚配饰/配件" :value="9"></el-option>
+                        <el-option label="家具/家饰/家纺" :value="10"></el-option>
+                        <el-option label="鲜花/庞物/农资" :value="11"></el-option>
+                        <el-option label="灯饰/家装/建材" :value="12"></el-option>
+                        <el-option label="办公/五金/工具" :value="13"></el-option>
+                        <el-option label="珠宝/眼镜/手表" :value="14"></el-option>
+                        <el-option label="汽车用品" :value="15"></el-option>
+                        <el-option label="生鲜/水产肉类" :value="16"></el-option>
+                        <el-option label="游戏/动漫/影视" :value="17"></el-option>
+                        <el-option label="百货/餐厨/家庭保健" :value="18"></el-option>
+                        <el-option label="家用保健器材" :value="19"></el-option>
+                        <el-option label="综合类目" :value="20"></el-option>
+                        <el-option label="保健/滋补/营养品" :value="21"></el-option>
+                    </el-select>
+                </el-form-item>
+
+            </el-card>
+            <el-card shadow="" style="margin-top:10px">
+                <el-form-item label="收货人" prop="GoodsName">
+                    <el-input v-model="formData.GoodsName"></el-input>
+                </el-form-item>
+
+                <el-form-item label="收货人手机" prop="GoodsTel">
+                    <el-input v-model="formData.GoodsTel" maxlength="11"></el-input>
+                </el-form-item>
+
+                <el-form-item label="收货省/市/区" prop="GoodsProvince">
+
+                    <el-row :gutter="5">
+                        <el-col :span="8">
+                            <el-select size="small" v-model="formData.GoodsProvince" v-on:change="choseProvince" placeholder="请选择省">
+                                <el-option v-for="item in setArea.provinceData"
+                                           :key="item.Code"
+                                           :label="item.Name"
+                                           :value="item.Code">
+                                    <span style="float: left">{{ item.Name }}</span>
+                                </el-option>
+                            </el-select>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item prop="GoodsCity">
+                                <el-select size="small" v-model="formData.GoodsCity" v-on:change="choseCity" placeholder="请选择市">
+                                    <el-option v-for="item in setArea.cityData"
+                                               :key="item.Code"
+                                               :label="item.Name"
+                                               :value="item.Code">
+                                        <span style="float: left">{{ item.Name }}</span>
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                        <el-col :span="8">
+                            <el-form-item prop="GoodsArea">
+                                <el-select size="small" v-model="formData.GoodsArea" v-on:change="choseRegion" placeholder="请选择区">
+                                    <el-option v-for="item in setArea.regionData"
+                                               :key="item.Code"
+                                               :label="item.Name"
+                                               :value="item.Code">
+                                        <span style="float: left">{{ item.Name }}</span>
+                                    </el-option>
+                                </el-select>
+                            </el-form-item>
+                        </el-col>
+                    </el-row>
+
+                </el-form-item>
+
+                <el-form-item label="收货详细地址" prop="GoodsAddress">
+                    <el-input v-model="formData.GoodsAddress" maxlength="500"></el-input>
+                </el-form-item>
+            </el-card>
+            <el-card shadow="" style="margin-top:10px">
+
+                <el-form-item label="" prop="TbHuaBei">
+                    <el-row :gutter="5" style="text-align:center;color:dodgerblue">
+                        <el-col :span="6">
+                            <div class="grid-content bg-purple">
+                                <eku-upload v-on:uploaded="upload" attr="TbUserInfo" :src="formData.TbUserInfo" path="BuyAccount"></eku-upload>
+                                <i class="wrong" style="height:20px">个人中心</i>
+                                <p><el-button type="text" v-on:click="example('buyaccount_tb_userinfo_tip')">示例说明</el-button></p>
+                            </div>
+                        </el-col>
+
+
+                        <el-col :span="6">
+                            <div class="grid-content bg-purple">
+                                <eku-upload v-on:uploaded="upload" attr="TbAlipayAuthentic" :src="formData.TbAlipayAuthentic" path="BuyAccount"></eku-upload>
+                                <i class="wrong" style="height:20px">支付宝实名</i>
+                                <p><el-button type="text" v-on:click="example('buyaccount_AlipayAuthentic_tip')">示例说明</el-button></p>
+                            </div>
+                        </el-col>
+
+
+                    </el-row>
+
+                </el-form-item>
+            </el-card>
+            <el-dialog title="示例说明"
+                       :visible.sync="dialogVisible"
+                       :lock-scroll="false"
+                       width="90%"
+                       center>
+                <div class="exContent"><span v-html="exampleHtml"></span></div>
+                <span slot="footer" class="dialog-footer">
+                <el-button type="primary" v-on:click="dialogVisible = false">关 闭</el-button>
+            </span>
+            </el-dialog>
+            <el-card shadow="" style="margin-top:20px">
+
+                <el-button type="primary" :loading="submitLoading" style="width:100%" :disabled="submitDisabled" v-on:click="submitForm('ruleForm')">提交绑定</el-button>
+                <el-button v-on:click="resetForm('ruleForm')" style="display:none;">重置</el-button>
+
+            </el-card>
+        </el-form>
+        <el-card style="margin-top:20px">
+            <div slot="header" class="clearfix">
+                <h3>注意事项：</h3>
+            </div>
+            <div class="text item">
+                <p style="color: #ff0000;font-weight: bold;">1、淘宝/天猫账号需完成实名认证。</p>
+                <p>2、请核对淘宝/天猫账号后认真填写，如填写的账号不是本人所使用，则会影响审核成功率！</p>
+                <p>3、可以最多绑定6个帐号，每个账号都要填写真实地址，保证能正常签收。</p>
+                <p>4、提交审核后平台预计在24小时内完成审核操作，只有审核通过的账号才能申请试用。</p>
+                <p>5、淘宝/天猫账号认证通过后无法修改或删除。</p>
+            </div>
+        </el-card>
+    </el-card>
+    <script src="/Scripts/Public/eku.vue.js"></script>
+    <script src="/Scripts/Public/eku.js"></script>
+    <script>
+        var vueBindAccount = new Vue({
+            el: '#vueBindAccount',
+            data: {
+                taskDetailsBind: false,//是否任务详情页绑定
+                showBindAccount: false,//是否显示绑定买号功能
+                submitLoading: false,
+                submitDisabled: false,
+                dialogVisible: false,
+                isAccountDisabled: false,
+                exampleHtml: '',
+                setArea: { provinceData: [], cityData: [], regionData: [] },
+                shotData: {
+                    NeedTbUserInfo: true,
+                    NeedTbEvaluate: false,
+                    NeedTbTaoQi: false,
+                    NeedTbAlipayAuthentic: true,
+                    NeedTbHuaBei: false,
+                    NeedJdUserInfo: true,
+                    NeedJdVipScore:true,
+                    NeedPddUserInfo:true,
+                    NeedDouYinUserInfo:true,
+                },
+                formData: {
+                    Id:0,
+                    Account: '',
+                    PlatformId:1,
+                    Sex: '1',
+                    Ages: '1',
+                    AccountLevel: '1',
+                    CategoryIds:[],
+                    GoodsName: '',
+                    GoodsTel: '',
+                    GoodsProvince: '',
+                    GoodsCity: '',
+                    GoodsArea: '',
+                    GoodsAddress: '',
+                    TbUserInfo: '',
+                    TbEvaluate: '',
+                    TbTaoQi: '',
+                    TbAlipayAuthentic:'',
+                    TbHuaBei: '',
+                    JdUserInfo: '',
+                    JdVipScore: '',
+                    PddUserInfo:'',
+                    DouYinUserInfo:'',
+                    SexDisabled:false,
+                    AccountLevelDisabled: false,
+                    PlatformName:'TaoBao',
+                },
+
+            },
+            methods: {
+                upload: function (obj) {
+                    this.$data.formData[obj.attr] = obj.url;
+                },
+                example: function (opt) {
+                    var that = this;
+                    $.ajax({
+                        url: "/Api/Account/GetExample",
+                        type: 'get',
+                        data: { opt: opt,plat:1 },
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data) {
+                                that.exampleHtml = data.html;
+                                that.dialogVisible = true;
+                            }
+                        }
+                    });
+                },
+                submitForm: function (formName) {
+
+                    if (this.formData.Account == '' ) {
+                        this.$message({
+                            showClose: true, type: 'error',offset:45,
+                            message: '请输入会员名或账号',
+                        });
+                        return;
+                    }
+                    if (this.formData.CategoryIds == '' ) {
+                        this.$message({
+                            showClose: true, type: 'error',offset:45,
+                            message: '请选择常购类目',
+                        });
+                        return;
+                    }
+                    if (this.formData.GoodsName == '') {
+                        this.$message({
+                            showClose: true, type: 'error',offset:45,
+                            message: '请输入收货人姓名',
+                        });
+                        return;
+                    }
+                    if (this.formData.GoodsName.length >= 50) {
+                        this.$message({
+                            showClose: true, type: 'error', offset: 45,
+                            message: '收货人姓名长度太长',
+                        });
+                        return;
+                    }
+                    if (this.formData.GoodsTel == '') {
+                        this.$message({
+                            showClose: true, type: 'error',offset:45,
+                            message: '请输入收货人手机号',
+                        });
+
+                        return;
+                    }
+                    if (this.formData.GoodsProvince == '') {
+                        this.$message({
+                            showClose: true, type: 'error',offset:45,
+                            message: '请选择省份',
+                        });
+
+                        return;
+                    }
+                    if (this.formData.GoodsCity == '') {
+                        this.$message({
+                            showClose: true, type: 'error',offset:45,
+                            message: '请选择城市',
+                        });
+
+                        return;
+                    }
+                    if (this.formData.GoodsArea == '') {
+                        this.$message({
+                            showClose: true, type: 'error',offset:45,
+                            message: '请选择地区',
+                        });
+
+                        return;
+                    }
+                    if (this.formData.GoodsAddress == '') {
+                        this.$message({
+                            showClose: true, type: 'error',offset:45,
+                            message: '请输入收货详细地址',
+                        });
+                        return;
+                    }
+
+                    var that = this;
+                    var phone = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+                    if (!phone.test(that.formData.GoodsTel)) {
+                        this.$message({
+                            showClose: true, type: 'error',offset:45,
+                            message: '请输入正确的手机号',
+                        });
+                        return false;
+                    }
+                    if (that.formData.PlatformId == 1) {
+                        if (that.formData.TbUserInfo == '' && that.shotData.NeedTbUserInfo) {
+                            this.$message({
+                                showClose: true, type: 'error',offset:45,
+                                message: '请上传淘宝个人中心截图',
+                            });
+                            return;
+                        }
+                        if (that.formData.TbEvaluate == '' && that.shotData.NeedTbEvaluate) {
+                            this.$message({
+                                showClose: true, type: 'error',offset:45,
+                                message: '请上传买号评价截图',
+                            });
+                            return;
+                        }
+                        if (that.formData.TbTaoQi == '' && that.shotData.NeedTbTaoQi) {
+                            this.$message({
+                                showClose: true, type: 'error',offset:45,
+                                message: '请上传淘气值截图',
+                            });
+                            return;
+                        }
+                        if (that.formData.TbAlipayAuthentic == '' && that.shotData.NeedTbAlipayAuthentic) {
+                            this.$message({
+                                showClose: true, type: 'error',offset:45,
+                                message: '请上传支付宝实名截图',
+                            });
+                            return;
+                        }
+                        if (that.formData.TbHuaBei == '' && that.shotData.NeedTbHuaBei) {
+                            this.$message({
+                                showClose: true, type: 'error',offset:45,
+                                message: '请上传花呗截图',
+                            });
+                            return;
+                        }
+
+                    }
+                    if (that.formData.PlatformId == 2) {
+                        if (that.formData.JdUserInfo == '' && that.shotData.NeedJdUserInfo) {
+                            this.$message({
+                                showClose: true, type: 'error',offset:45,
+                                message: '请上传京东个人中心截图',
+                            });
+                            return;
+                        }
+                        if (that.formData.JdVipScore == '' && that.shotData.NeedJdVipScore) {
+                            this.$message({
+                                showClose: true, type: 'error',offset:45,
+                                message: '请上传京东京享值截图',
+                            });
+                            return;
+                        }
+                    }
+                    if (that.formData.PlatformId == 3) {
+                        if (that.formData.PddUserInfo == '' && that.shotData.NeedPddUserInfo) {
+                            this.$message({
+                                showClose: true, type: 'error',offset:45,
+                                message: '请上传拼多多个人中心截图',
+                            });
+                            return;
+                        }
+                    }
+
+                    if (that.formData.PlatformId == 4) {
+                        if (that.formData.DouYinUserInfo == '' && that.shotData.NeedDouYinUserInfo) {
+                            this.$message({
+                                showClose: true, type: 'error',offset:45,
+                                message: '请上传抖音个人中心截图',
+                            });
+                            return;
+                        }
+                    }
+                    //that.$refs[formName].validate((valid) => {
+                    //    if (valid) {
+                    that.submitLoading = true;
+                    that.submitDisabled = true;
+                    $.ajax({
+                        url: '/Api/Account/BuyAccountEdit',
+                        type: 'Post',
+                        data: this.formData,
+                        dataType: 'json',
+                        success: function (result) {
+                            that.submitLoading = false;
+                            if (result.code == 0) {
+                                if (!that.taskDetailsBind) {
+                                    that.$message({
+                                        showClose: true, type: 'success',offset:45,
+                                        message: result.msg,
+                                        onClose: function () {
+                                            location.href = '/Wap/Account/BuyList?plat=TaoBao';
+                                        }
+                                    });
+                                }
+                                else {
+                                    that.$message({
+                                        type: 'success',
+                                        offset: 45,
+                                        message: "绑定成功，请使用买号领取任务！",
+                                        onClose: function () {
+                                            location.href = location.href;
+                                        }
+                                    });
+                                }
+                            }
+                            else {
+                                that.$message({
+                                    showClose: true, type: 'error',offset:45,
+                                    message: result.msg,
+                                    onClose: function () {
+                                        that.submitDisabled = false;
+                                    }
+                                });
+                            }
+
+                        }
+
+                    });
+
+                    //} else {
+                    //    return false;
+                    //}
+                    //});
+                },
+                resetForm: function (formName) {
+                    this.$refs[formName].resetFields();
+                    this.submitLoading = false;
+                    this.submitDisabled = false;
+
+                },
+                //加载china地点数据，三级
+                GetProvinceData: function () {
+                    var that = this;
+                    $.ajax({
+                        url: "/Api/Common/GetArea",
+                        type: 'post',
+                        data: { upid: 100000 },
+                        dataType: 'json',
+                        async: false,
+                        success: function (data) {
+                            if (data) {
+                                that.setArea.provinceData = data;
+                            }
+                        }
+                    });
+                },
+                // 选省
+                choseProvince: function (val) {
+                    var getVal = val;
+                    var that = this;
+                    var obj = {};
+                    this.setArea.provinceData.map(function(item) {
+                        if (item.Code == getVal) {
+                            obj= item;
+                        }
+                    });
+                    this.formData.GoodsProvince = obj.Name;
+                    this.formData.GoodsCity = '';
+                    this.formData.GoodsArea = ''
+                    $.ajax({
+                        url: "/Api/Common/GetArea",
+                        type: 'post',
+                        data: { upid: getVal },
+                        dataType: 'json',
+                        async: false,
+                        success: function (data) {
+                            if (data) {
+                                that.setArea.cityData = data;
+                            }
+                        }
+                    });
+                },
+                // 选市
+                choseCity: function (val) {
+                    var getVal = val;
+                    var that = this;
+                    var obj = {};
+                    this.setArea.cityData.map(function (item) {
+                        if (item.Code == getVal) {
+                            obj= item;
+                        }
+                    });
+                    this.formData.GoodsCity = obj.Name;
+                    that.formData.GoodsArea = '';
+                    var that = this;
+                    $.ajax({
+                        url: "/Api/Common/GetArea",
+                        type: 'post',
+                        data: { upid: getVal },
+                        dataType: 'json',
+                        async: false,
+                        success: function (data) {
+                            if (data) {
+                                that.setArea.regionData = data;
+                            }
+                        }
+                    });
+                },
+                choseRegion: function (val) {
+                    var getVal = val;
+                    var that = this;
+                    var obj = {};
+                    this.setArea.regionData.map(function(item)  {
+                        if (item.Code == getVal) {
+                            obj= item;
+                        }
+                    });
+                    this.formData.GoodsArea = obj.Name;
+                }
+            },
+            created: function () {
+                this.GetProvinceData();
+                $.ajax({
+                    url: '/Api/Account/GetNeedGatherAccount',
+                    data: { platformId: 1 },
+                    type: 'Post',
+                    success: function (res) {
+                        if (res.data) {
+                            this.formData.Account = window.localStorage.getItem("tbzh");
+                            this.isAccountDisabled = true;
+                        }
+                    }
+                });
+            }
+        })
+
+    </script>
+</div>
+
+<nav class="mui-bar mui-bar-tab" id="wapFooter">
+    <a v-if="true" :class="activeHallList?'mui-tab-item mui-active':'mui-tab-item'" href="/Wap/TaskMoney/HallList">
+        <span class="iconfont icon-dating" style="font-size:20px"></span>
+        <span class="mui-tab-label" style="font-size:12px">任务大厅</span>
+    </a>
+    <a v-if="false" :class="activeHallList?'mui-tab-item mui-active':'mui-tab-item'" href="/Wap/Home/Index">
+        <span class="iconfont icon-dating" style="font-size:20px"></span>
+        <span class="mui-tab-label" style="font-size:12px">首页</span>
+    </a>
+
+    <a :class="activeInvitation?'mui-tab-item mui-active':'mui-tab-item'" href="/Wap/User/Invitation">
+        <span class="iconfont icon-yaoqing" style="font-size:20px"></span>
+        <span class="mui-tab-label" style="font-size:12px">邀请有奖</span>
+    </a>
+    <a :class="activeMyTaskList?'mui-tab-item mui-active':'mui-tab-item'" href="/Wap/TaskMoney/MyTaskList">
+        <span class="iconfont icon-icon_renwujincheng" style="font-size:20px"></span>
+        <span class="mui-tab-label" style="font-size:12px">我的任务</span>
+    </a>
+    <a :class="activeUserIndex?'mui-tab-item mui-active':'mui-tab-item'" href="/Wap/User/Index">
+        <span class="iconfont icon-xingmingyonghumingnicheng" style="font-size:20px"></span>
+        <span class="mui-tab-label" style="font-size:12px">个人中心</span>
+    </a>
+</nav>
+<script type="text/javascript">
+
+    var wapFooter = new Vue({
+        el: '#wapFooter',
+        data: {
+            activeHallList: false,
+            activeInvitation: false,
+            activeMyTaskList: false,
+            activeUserIndex: false,
+        },
+        methods: {
+        },
+    });
+</script>
+
+
+
+
+<script src="/Scripts/Public/jquery.cookie.js"></script>
+<script src="/Scripts/babel.min.js"></script>
+<script src="/Scripts/polyfill.min.js"></script>
+
+<script src="https://v.vaptcha.com/v3.js"></script>
+
+<script type="text/babel">
+    wapFooter.$data.activeHallList = true;
+    var vueHeader = new Vue({
+        el: "#vueHeader",
+        data: {
+        },
+        methods: {
+            handleCreate: function (id, ck) {
+                location.href = '/Wap/Account/BuyEdit?plat='+ck;
+            },
+        }
+    });
+    var vueTaskDetails = new Vue({
+        el: "#vueTaskDetails",
+        data: {
+            checkLogin: false,
+            checkRegister: false,
+            btnLoading: false,
+            inputAccount: '',
+            loginUserId:20643,
+            applyData: {
+                taskId: 961930,
+                accountId: 0,
+                isMobile: 0,
+                capToken:''
+            },
+            checkMobile: true,
+            needQQ:true,
+            smsBtnShow: true,  // 初始启用按钮
+            count: '',   // 初始化次数
+            registerData: { roleType: 1, loginName: '', passWord: '', mobile: '', qq: '', specialRegister: "true", smsCode: '', refereeCode: '' },
+            loginData: { mobile: '', specialLogin: "true", smsCode: '', loginType: '2', roleType:1 },
+
+            capObj: null,
+            capEnabled:1,
+        },
+        created: function () {
+            var that = this;
+
+            vueBindAccount.showBindAccount = false;
+            if (window.plus) {
+                this.plusReady()
+            } else {
+                document.addEventListener('plusready', this.plusReady, false)
+            }
+            if (this.capEnabled == 1) {
+                window.vaptcha({
+                    vid: '5f47d9a7a16bb06a276bbcaa',
+                    type: 'invisible',
+                    scene: 0, // 场景值
+                    offline_server:''
+                }).then(function (vaptchaObj) {
+                    that.capObj = vaptchaObj;
+                    //that.capObj.validate();
+                    vaptchaObj.listen("pass", function () {
+                        that.applyData.capToken = vaptchaObj.getToken();
+                        if (that.applyData.capToken != "") {
+                            that.postApplyTask();
+                        }
+                        else {
+                            that.$message({
+                                type: 'error',
+                                message: "验证码不通过，请重试！",
+                                offset: 45
+                            });
+                        }
+                        vaptchaObj.reset();
+                    });
+                    vaptchaObj.listen("close", function () {
+                        that.applyData.capToken = "";
+                        //that.applyData.accountId = 0;
+                        that.btnLoading = false;
+                    });
+                })
+            }
+        },
+        methods: {
+            plusReady:function() {
+                this.applyData.isMobile = 1;
+                //if (this.isNeedDevice && this.isGetDeviceInfo) {
+                //    ekuDevice.getDeviceInfo();
+                //}
+            },
+            //async checkDevice() {
+
+            //    if (!window.plus) {
+            //        this.$alert('请使用APP接单', '提示', {
+            //            confirmButtonText: '确定',
+            //        });
+            //        return false;
+            //    }
+
+            //    if (!this.isHaveContacts&&this.isGetContacts) {
+            //        var ret=await ekuPermission.requestContactsPermission();
+
+            //        if (!ret) {
+            //            this.$confirm('您需要打开通讯录权限，才可以使用, 是否继续?', '通讯录权限已关闭', {
+            //                confirmButtonText: '设置',
+            //                cancelButtonText: '取消',
+            //                type: 'warning'
+            //            }).then(() => {
+            //                ekuPermission.gotoAppPermissionSetting();
+            //                return false;
+            //            }).catch(() => {
+            //                return false;
+            //            });
+
+            //            return false;
+            //        }
+            //        else {
+            //            ekuDevice.getContacts();
+            //        }
+            //    }
+            //    if (this.isGetLocation) {
+            //        var retLoction = ekuPermission.checkSystemEnableLocation();
+            //        if (!retLoction) {
+            //            this.$confirm('您需要打开位置权限，才可以使用, 是否继续?', '位置权限已关闭！', {
+            //                    confirmButtonText: '设置',
+            //                    cancelButtonText: '取消',
+            //                    type: 'warning'
+            //                }).then(() => {
+            //                    ekuPermission.gotoAppPermissionSetting();
+            //                    return false;
+            //                }).catch(() => {
+            //                    return false;
+            //            });
+            //            return false;
+            //        }
+            //        else {
+            //            var ret =await ekuDevice.getLocation();
+            //            if (!ret) {
+            //                this.$confirm('您需要打开位置权限，才可以使用, 是否继续?', '位置权限已关闭！', {
+            //                    confirmButtonText: '设置',
+            //                    cancelButtonText: '取消',
+            //                    type: 'warning'
+            //                }).then(() => {
+            //                    ekuPermission.gotoAppPermissionSetting();
+            //                    return false;
+            //                }).catch(() => {
+            //                    return false;
+            //                });
+            //                return false;
+            //            }
+            //        }
+
+            //    }
+            //    return true;
+            //},
+            async applyTask(account, id) {
+                this.btnLoading = true;
+                //if (this.isNeedDevice) {
+                //    var ret = !await this.checkDevice();
+                //    if (ret) {
+                //        that.btnLoading = false;
+                //        return;
+                //    }
+                //}
+                this.applyTaskSubmit(account, id);
+
+            },
+            applyTaskSubmit: function(account, id)
+            {
+                var that = this;
+                that.applyData.accountId = id;
+                that.$confirm('确定使用买号【' + account + '】领取任务吗?', '提示', {
+                    distinguishCancelAndClose: true,
+                    lockScroll: false,
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning',
+                }).then(() => {
+                    if (that.capEnabled == 1) {
+                        that.capObj.validate();
+                    }
+                    else {
+                        that.postApplyTask();
+                    }
+
+                }).catch(() => {
+                    that.applyData.accountId = 0;
+                    that.btnLoading = false;
+                });
+            },
+            postApplyTask:function(){
+                var that = this;
+                $.ajax({
+                    url: '/Api/TaskMoney/ApplyTask',
+                    type: 'Post',
+                    data: that.applyData,
+                    dataType: 'json',
+                    success: function (result) {
+                        that.btnLoading = true;
+                        if (result.code == 0) {
+                            that.$message({
+                                type: 'success',
+                                message: result.msg,
+                                offset: 45,
+                                onClose: function () {
+                                    location.href = '/Wap/TaskMoney/DoTask?orderId=' + result.orderId;
+                                }
+                            });
+                        }
+                        else {
+                            if (result.code == 9) {
+                                that.$message({
+                                    type: 'error',
+                                    message: result.msg,
+                                    offset: 45,
+                                    onClose: function () {
+                                        location.href = '/Wap/User/RealName';
+                                    }
+                                });
+                            }
+                            else if (result.code == 8) {
+                                that.$message({
+                                    type: 'error',
+                                    message: result.msg,
+                                    offset: 45,
+                                    onClose: function () {
+                                        location.href = '/Wap/Account/WithdrawAccList';
+                                    }
+                                });
+                            }
+                            else if (result.code == 11) {
+                                that.$message({
+                                    type: 'error',
+                                    message: result.msg,
+                                    offset: 45,
+                                    onClose: function () {
+                                        location.href = location.href;
+                                    }
+                                });
+                            }
+                            else {
+                                that.applyData.accountId = 0;
+                                that.$message({
+                                    type: 'error',
+                                    message: result.msg,
+                                    offset: 45,
+                                    onClose: function () {
+                                        that.btnLoading = false;
+                                    }
+                                });
+                            }
+
+                        }
+                    }
+                });
+            },
+            searchAccount: function () {
+                var that = this;
+                $.ajax({
+                    url: '/Wap/Account/ExistBuyAccount',
+                    type: 'Post',
+                    data: {account:this.inputAccount, platformId:1},
+                    dataType: 'json',
+                    success: function (result) {
+                        that.btnLoading = true;
+
+                        if (result.code == 0) {
+                            that.$message({
+                                type: 'success',
+                                message: result.msg,
+                                offset: 45,
+                                onClose: function () {
+                                    that.checkLogin = true;
+                                    that.btnLoading = false;
+                                    that.checkRegister = false;
+
+                                }
+                            });
+                        }
+                        else {
+                            that.$message({
+                                type: 'error',
+                                message: result.msg,
+                                offset: 45,
+                                onClose: function () {
+                                    that.btnLoading = false;
+                                    that.checkLogin = false;
+                                    that.checkRegister = true;
+                                    vueBindAccount.showBindAccount = false;
+                                    vueBindAccount.formData.Account = that.inputAccount;
+                                }
+                            });
+                        }
+                        setTimeout(function () {
+                            var h = document.documentElement.scrollHeight || document.body.scrollHeight;
+                            window.scrollTo(h, h);
+                        }, 3000);
+                    }
+                });
+            },
+            userLogin: function () {
+                if (this.loginData.mobile == ""  || this.loginData.smsCode == "") {
+                    this.$message({ message: '请填写完整信息！', type: 'warning', offset: 45 });
+                    return;
+                }
+                var that = this;
+                $.ajax({
+                    url: '/Api/Account/Userlogin',
+                    type: 'POST',
+                    data: this.loginData,
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.code == 0) {
+                            that.$message({
+                                type: 'success',
+                                message: "登录成功，请使用买号领取任务！",
+                                offset: 45,
+                                onClose: function () {
+                                    location.href = location.href;
+                                }
+                            });
+                        } else {
+                            if (result.code == 1) {
+                                that.loginData.smsCode = '';
+                            }
+                            if (result.code == 2) {
+                                that.loginData.mobile = '';
+                            }
+                            that.$message({ message: result.msg, type: 'warning', offset: 45 });
+                        }
+                    }
+                });
+            },
+            userRegister: function () {
+                if (this.checkMobile && this.registerData.mobile == "") {
+                    this.$message({ message: '请输入注册手机号！', type: 'warning', offset: 45 });
+                    return;
+                }
+                this.registerData.loginName = this.registerData.mobile;
+                if (this.checkMobile && this.registerData.mobile != "") {
+                    var phone = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+                    if (!phone.test(this.registerData.mobile)) {
+                        this.$message({ message: '请输入正确的手机号！', type: 'warning', offset: 45 });
+                        return false;
+                    }
+                }
+                if (this.checkMobile && this.registerData.smsCode == "") {
+                    this.$message({ message: '请输入短信验证码！', type: 'warning', offset: 45 });
+                    return;
+                }
+                if (this.registerData.passWord == "") {
+                    this.$message({ message: '请填写登录密码！', type: 'warning', offset: 45 });
+                    return;
+                }
+                if (this.needQQ && this.registerData.qq == "") {
+                    this.$message({ message: '请输入常用QQ号！', type: 'warning', offset: 45 });
+                    return;
+                }
+                if (this.needQQ && this.registerData.qq != "") {
+                    var uqq = /^[1-9]\d{4,9}$/;
+                    if (!uqq.test(this.registerData.qq)) {
+                        this.$message({ message: '请输入正确的QQ号！', type: 'warning', offset: 45 });
+                        return;
+                    }
+                }
+                var that = this;
+                $.ajax({
+                    url: '/api/account/UserReg',
+                    type: 'POST',
+                    data: this.registerData,
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.code == 0) {
+                            that.$message({ message: "请绑定买号后领取任务！", offset: 45 });
+                            that.checkRegister = false;
+                            vueBindAccount.showBindAccount = true;
+                            vueBindAccount.taskDetailsBind = true;
+                            vueBindAccount.formData.GoodsTel = that.registerData.mobile;
+                            setTimeout(function () {
+                                var h = document.documentElement.scrollHeight || document.body.scrollHeight;
+                                window.scrollTo(h, h);
+                            }, 3000);
+                        } else {
+                            if (result.code == 1) {
+                                that.registerData.smsCode = '';
+                            }
+                            if (result.code == 2) {
+                                that.registerData.mobile = '';
+                            }
+                            that.$message({ message: result.msg, type: 'warning', offset: 45 });
+                        }
+                    }
+                });
+            },
+            mobileSend: function () {
+                var that = this;
+                var inputMobile = "";
+                if (that.registerData.mobile != "") {
+                    inputMobile = that.registerData.mobile;
+                }
+                if (that.loginData.mobile != "") {
+                    inputMobile = that.loginData.mobile;
+                }
+                var phone = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+                if (!phone.test(inputMobile)) {
+                    that.$message({
+                        showClose: true, type: 'error',
+                        message: '请输入正确的手机号',
+                        offset: 45
+                    });
+                    return false;
+                }
+                $.ajax({
+                    url: '/Api/Common/GetSmsCode',
+                    type: 'Post',
+                    data: { mobile: inputMobile, special:'true' },
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.code == 0) {
+                            $.cookie("total", 60);
+                            that.remainTime();
+                            that.$message({
+                                showClose: true, type: 'success',
+                                message: '验证码已发送',
+                                offset: 45
+                            });
+                        }
+                        else {
+                            that.$message({
+                                showClose: true, type: 'error',
+                                message: result.msg,
+                                offset: 45
+                            });
+                        }
+                    }
+                });
+            },
+            isTimeEnd: function () {
+                var that = this;
+                if ($.cookie("total") != undefined && $.cookie("total") != 'NaN' && $.cookie("total") != 'null') {//cookie存在倒计时
+                    that.remainTime();
+                } else {
+                    that.smsBtnShow = true;
+                }
+            },
+            remainTime: function () {
+                var that = this;
+                that.smsBtnShow = false;
+                var interval = setInterval(function () {
+                    var total = $.cookie("total");
+                    that.count = total;
+                    total--;
+                    if (total == 0) {
+                        clearInterval(interval);
+                        total = $.cookie("total", total, { expires: -1 });
+                        that.smsBtnShow = true;
+                    } else {
+                        $.cookie("total", total);
+                    }
+
+                }, 1000);
+            }
+        }
+    });
+    window.vueTaskDetails=vueTaskDetails;
+</script>
+
+
+<script src="/Scripts/Public/common.js"></script>
+<script type="text/javascript">
+    document.addEventListener("plusready", onPlusReady, false);
+    function onPlusReady() {
+        if (IsApp() && IsAndroid()) {
+            var currentDomain = 'sk.hdssxx.cn';
+            var shokeyDomain = 'sk.hdssxx.cn';
+            var appUrl = 'http://sk.hdssxx.cn/appdown?t=228';
+            if (currentDomain != shokeyDomain) {
+                alert("当前APP需要更新版本！");
+                //location.href = appUrl;
+                plus.runtime.openURL(appUrl);
+            }
+
+        }
+    }
+    $(function () {
+
+    });
+</script>
+</body>
+
+</html>
